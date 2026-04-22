@@ -7,7 +7,10 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
-      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { caughtErrorsIgnorePattern: '^_' },
+      ],
       '@typescript-eslint/explicit-function-return-type': 'warn',
     },
   },

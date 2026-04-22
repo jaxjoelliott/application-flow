@@ -4,7 +4,7 @@
   "description": "A 12-week structured build program learning basics of AWS serverless development documented in one Github repository.",
   "main": "dist/index.ts",
   "scripts": {
-    "lint": "eslint 'src/**/*.ts'",
+    "lint": "eslint 'src/**/*.ts' --no-error-on-unmatched-pattern",
     "test": "jest",
     "format": "prettier --write .",
     "build": "tsc",

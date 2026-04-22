@@ -26,10 +26,6 @@ const event = {
   }),
 };
 
-const badEvent = {
-  body: 'not valid json{{{{',
-};
-
 describe('createApplication handler', () => {
   test('returns 201 with id on valid input', async () => {
     const response = await handler(event);

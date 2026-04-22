@@ -4,7 +4,9 @@ import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
-export const handler = async (event: { body: string }) => {
+export const handler = async (event: {
+  body: string;
+}): Promise<{ statusCode: number; body: string }> => {
   try {
     const body = JSON.parse(event.body);
     const id = crypto.randomUUID();
@@ -28,7 +30,7 @@ export const handler = async (event: { body: string }) => {
       statusCode: 201,
       body: JSON.stringify({ id }),
     };
-  } catch (error) {
+  } catch (_error) {
     return {
       statusCode: 400,
       body: JSON.stringify({ message: 'Invalid request body' }),

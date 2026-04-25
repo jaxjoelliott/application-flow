@@ -12,7 +12,11 @@ export const handler = async (): Promise<{
     const result = await docClient.send(
       new ScanCommand({
         TableName: process.env.TABLE_NAME,
-        ProjectionExpression: 'id, company, position, status, date_applied',
+        ProjectionExpression: 'id, company, #position, #status, date_applied',
+        ExpressionAttributeNames: {
+          '#position': 'position',
+          '#status': 'status',
+        },
       }),
     );
     return {

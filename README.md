@@ -13,6 +13,13 @@ Lambda · API Gateway · DynamoDB
 src/handlers/ — Lambda functions
 terraform/ — infrastructure as code (DynamoDB table)
 
+## Architecture
+POST /applications → API Gateway → createApplication Lambda → DynamoDB
+GET /applications → API Gateway → listApplications Lambda → DynamoDB
+GET /applications/{id} → API Gateway → getApplication Lambda → DynamoDB
+PUT /applications/{id} → API Gateway → updateApplication Lambda → DynamoDB
+DELETE /applications/{id} → API Gateway → deleteApplication Lambda → DynamoDB
+
 ## Setup
 1. Clone the repo
 2. Run `npm install`
@@ -25,5 +32,5 @@ terraform/ — infrastructure as code (DynamoDB table)
 3. Upload zip to Lambda via AWS console
 4. Set environment variable `TABLE_NAME=job-applications`
 
-5. ## Testing
+## Testing
 npm test

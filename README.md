@@ -1,4 +1,4 @@
-# Job Application Tracker
+# ApplicationFlow
 
 ![ci](https://github.com/jaxjoelliott/job-tracker/actions/workflows/ci.yml/badge.svg)
 

@@ -25,6 +25,9 @@ GET /applications/{id} → API Gateway → getApplication Lambda → DynamoDB
 PUT /applications/{id} → API Gateway → updateApplication Lambda → DynamoDB
 DELETE /applications/{id} → API Gateway → deleteApplication Lambda → DynamoDB
 
+## Base URL
+`https://a52etcbuk7.execute-api.us-east-1.amazonaws.com`
+
 ## Data Model
 
 id: id of application, used to access for updates/deletion/get

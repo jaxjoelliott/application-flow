@@ -1,6 +1,11 @@
 
 
 terraform {
+  backend "s3" {
+    bucket = "applicationflow-dev-jackson"
+    key    = "applicationflow/terraform.tfstate"
+    region = "us-east-1"
+  }
   required_providers {
     aws = {
       source = "hashicorp/aws"

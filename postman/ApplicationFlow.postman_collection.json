@@ -1,0 +1,354 @@
+{
+  "info": {
+    "_postman_id": "5c7c3635-2a81-4139-9ff4-bcd716c509e2",
+    "name": "job-tracker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54108646",
+    "_collection_link": "https://go.postman.co/collection/54108646-5c7c3635-2a81-4139-9ff4-bcd716c509e2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Application",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"company\": \"Google\",\n  \"position\": \"Software Engineer\",\n  \"status\": \"submitted\",\n  \"date_applied\": \"2026-04-23\",\n  \"wage\": \"150000\",\n  \"link\": \"https://google.com\",\n  \"contact\": \"recruiter@google.com\",\n  \"free_notes\": \"Applied online\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/applications",
+          "host": ["{{base_url}}"],
+          "path": ["applications"]
+        }
+      },
+      "response": [
+        {
+          "name": "Create Application - Success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company\": \"Redvanly\",\n  \"position\": \"Assisant Store Manager\",\n  \"status\": \"submitted\",\n  \"date_applied\": \"2026-04-23\",\n  \"wage\": \"40000\",\n  \"link\": \"https://redvanly.com\",\n  \"contact\": \"info@redvanly.com\",\n  \"free_notes\": \"Applied online\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/applications",
+              "host": ["{{base_url}}"],
+              "path": ["applications"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 201
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:40:13 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "45"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpzZkhHeIAMEPWQ="
+            }
+          ],
+          "cookie": [],
+          "body": "{\"id\":\"a7a10dd4-96c8-4d41-8db5-d3b9ad4d8e66\"}"
+        }
+      ]
+    },
+    {
+      "name": "List Applications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/applications",
+          "host": ["{{base_url}}"],
+          "path": ["applications"]
+        }
+      },
+      "response": [
+        {
+          "name": "List Applications - Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/applications",
+              "host": ["{{base_url}}"],
+              "path": ["applications"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:41:14 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "457"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpzi7iFvoAMEZ7g="
+            }
+          ],
+          "cookie": [],
+          "body": "[{\"date_applied\":\"2026-04-23\",\"company\":\"Redvanly\",\"id\":\"a7a10dd4-96c8-4d41-8db5-d3b9ad4d8e66\",\"position\":\"Assisant Store Manager\",\"status\":\"submitted\"},{\"date_applied\":\"2026-04-23\",\"company\":\"Redvanly\",\"id\":\"2b2568e5-a69c-4bc3-99bf-6acb06f22199\",\"position\":\"Assisant Store Manager\",\"status\":\"submitted\"},{\"date_applied\":\"2026-04-23\",\"company\":\"Redvanly\",\"id\":\"bbeb2efe-01dc-4dd1-bf9d-c3a9a599d6dd\",\"position\":\"Assisant Store Manager\",\"status\":\"submitted\"}]"
+        }
+      ]
+    },
+    {
+      "name": "Get Application",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/applications/{{application_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["applications", "{{application_id}}"]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Application",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/applications/{{application_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["applications", "{{application_id}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:41:46 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "256"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpzn0j_NIAMEP8g="
+            }
+          ],
+          "cookie": [],
+          "body": "{\"date_applied\":\"2026-04-23\",\"free_notes\":\"Applied online\",\"company\":\"Redvanly\",\"contact\":\"info@redvanly.com\",\"status\":\"submitted\",\"link\":\"https://redvanly.com\",\"id\":\"a7a10dd4-96c8-4d41-8db5-d3b9ad4d8e66\",\"wage\":\"40000\",\"position\":\"Assisant Store Manager\"}"
+        },
+        {
+          "name": "Get Application - Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/applications/{{application_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["applications", "{{application_id}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:41:46 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "256"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpzn0j_NIAMEP8g="
+            }
+          ],
+          "cookie": [],
+          "body": "{\"date_applied\":\"2026-04-23\",\"free_notes\":\"Applied online\",\"company\":\"Redvanly\",\"contact\":\"info@redvanly.com\",\"status\":\"submitted\",\"link\":\"https://redvanly.com\",\"id\":\"a7a10dd4-96c8-4d41-8db5-d3b9ad4d8e66\",\"wage\":\"40000\",\"position\":\"Assisant Store Manager\"}"
+        }
+      ]
+    },
+    {
+      "name": "Update Application",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"company\": \"Redvanly\",\n  \"position\": \"Finance Intern\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/applications/{{application_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["applications", "{{application_id}}"]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Application - Success",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company\": \"Redvanly\",\n  \"position\": \"Finance Intern\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/applications/{{application_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["applications", "{{application_id}}"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 200
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:42:24 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "248"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpztwgO3oAMEZdw="
+            }
+          ],
+          "cookie": [],
+          "body": "{\"date_applied\":\"2026-04-23\",\"company\":\"Redvanly\",\"free_notes\":\"Applied online\",\"contact\":\"info@redvanly.com\",\"status\":\"submitted\",\"link\":\"https://redvanly.com\",\"id\":\"a7a10dd4-96c8-4d41-8db5-d3b9ad4d8e66\",\"wage\":\"40000\",\"position\":\"Finance Intern\"}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Application",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{base_url}}/applications/{{application_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["applications", "{{application_id}}"]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Application - Success",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/applications/{{application_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["applications", "{{application_id}}"]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": ":status",
+              "value": 204
+            },
+            {
+              "key": "date",
+              "value": "Thu, 30 Apr 2026 21:42:40 GMT"
+            },
+            {
+              "key": "apigw-requestid",
+              "value": "cpzwQhrPoAMEZ0Q="
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ]
+}

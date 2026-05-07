@@ -12,6 +12,14 @@ export const handler = async (event: {
   body: string;
 }> => {
   try {
+    console.log(
+      JSON.stringify({
+        level: 'INFO',
+        function: 'updateApplication',
+        message: 'Request received',
+        input: event.pathParameters,
+      }),
+    );
     const body = JSON.parse(event.body);
     const result = await docClient.send(
       new UpdateCommand({
@@ -33,17 +41,42 @@ export const handler = async (event: {
     );
 
     if (!result.Attributes) {
+      console.log(
+        JSON.stringify({
+          level: 'ERROR',
+          function: 'updateApplication',
+          message: 'Failed to update application',
+          input: event.pathParameters,
+        }),
+      );
       return {
         statusCode: 404,
         body: JSON.stringify({ message: 'Application not found' }),
       };
     }
 
+    console.log(
+      JSON.stringify({
+        level: 'INFO',
+        function: 'updateApplication',
+        message: 'Application updated successfully',
+        input: event.pathParameters,
+      }),
+    );
+
     return {
       statusCode: 200,
       body: JSON.stringify(result.Attributes),
     };
   } catch (_error) {
+    console.log(
+      JSON.stringify({
+        level: 'ERROR',
+        function: 'updateApplication',
+        error: (_error as Error).message,
+        input: event.pathParameters,
+      }),
+    );
     return {
       statusCode: 500,
       body: JSON.stringify({ message: 'Internal server error' }),

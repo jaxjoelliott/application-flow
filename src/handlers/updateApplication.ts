@@ -21,21 +21,29 @@ export const handler = async (event: {
       }),
     );
     const body = JSON.parse(event.body);
+
+    const keys = Object.keys(body);
+
+    const expressionAttributeNames: Record<string, string> = {};
+    const expressionAttributeValues: Record<string, unknown> = {};
+    const updateParts: string[] = [];
+
+    keys.forEach((key) => {
+      expressionAttributeNames[`#${key}`] = key;
+      expressionAttributeValues[`:${key}`] = body[key];
+      updateParts.push(`#${key} = :${key}`);
+    });
+
+    const updateExpression = 'SET ' + updateParts.join(', ');
     const result = await docClient.send(
       new UpdateCommand({
         TableName: process.env.TABLE_NAME,
         Key: {
           id: event.pathParameters.id,
         },
-        UpdateExpression: 'SET #company = :company, #position = :position',
-        ExpressionAttributeNames: {
-          '#company': 'company',
-          '#position': 'position',
-        },
-        ExpressionAttributeValues: {
-          ':company': body.company,
-          ':position': body.position,
-        },
+        UpdateExpression: updateExpression,
+        ExpressionAttributeNames: expressionAttributeNames,
+        ExpressionAttributeValues: expressionAttributeValues,
         ReturnValues: 'ALL_NEW',
       }),
     );
